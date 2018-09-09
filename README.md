@@ -6,9 +6,11 @@ A plugin based, (user)bot for Telegram, somewhat inspired by [otouto](https://gi
 [uniborg]: https://github.com/uniborg/uniborg
 
 ## Requirements
-- Telethon 1.2
+- [Telethon] 1.2
 - \>= Python 3.5 (Tested on 3.6.6 and 3.7.0)
 - A brain probably
+
+[Telethon]: https://github.com/LonamiWebs/Telethon
 
 ---
 
@@ -32,6 +34,7 @@ A plugin based, (user)bot for Telegram, somewhat inspired by [otouto](https://gi
     -  If you want a userbot; add your phone number to `PHONE`, if you want an api bot; add your bot token to `TOKEN`
 1.  Start bot  
 
+[my telegram]: https://my.telegram.org/
 
 `start.sh` creates a `screen` session called `qbot`.  Check the logs by doing `screen -r qbot`.  Detach from the session with `ctrl a`, `d`.  Stop the bot with `ctrl c`.
 
