@@ -2,6 +2,6 @@ from random import random
 
 # Probability
 def probability(percent):
-    Probability = random() < percent
-    print(Probability)
-    return Probability
+    outcome = random() < percent
+    print(outcome)
+    return outcome
