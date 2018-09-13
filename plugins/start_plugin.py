@@ -8,4 +8,4 @@ async def on_start(event):
         print(f"[{event.date.strftime('%c')}] [{sender.id}] {sender.username}: {event.pattern_match.string}")
         await event.respond('This is a bot for silly replies')
 
-on_start.event = events.NewMessage(pattern=r"(/start)$")
+on_start.event = events.NewMessage(pattern=r"(/start)$", incoming=True)
