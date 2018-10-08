@@ -19,6 +19,7 @@ sys.dont_write_bytecode = True
 config = configparser.ConfigParser()
 config.read_file(open("config.ini"))
 token = config['DEFAULT']['TOKEN']
+phone = config['DEFAULT']['PHONE']
 session_name = config['DEFAULT']['SESSION_NAME']
 api_id = config['DEFAULT']['ID']
 api_hash = config['DEFAULT']['HASH']
