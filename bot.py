@@ -57,10 +57,10 @@ help_message = f"""**List of commands:**
 Do `/help <command>` to learn more about it.
 """
 
-@client.on(events.NewMessage(pattern=r"^/help(?: (\S+))?$"))
+@client.on(events.NewMessage(pattern=r"^/help(?: (\S+))?$", forwards=False))
 async def help(event):
     sender = await event.get_sender()
-    if event.is_private:
+    if event.is_private and not (await event.get_chat()).bot:
         print(f"[{event.date.strftime('%c')}] [{sender.id}] {sender.username}: {event.pattern_match.string}")
         try:
             await event.respond(plugin_dict[event.pattern_match.group(1)], link_preview=False)
