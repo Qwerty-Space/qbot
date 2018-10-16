@@ -40,7 +40,7 @@ For userbot plugins, see [qserbot_plugins].  For an api bot with more built-in p
 
 [my telegram]: https://my.telegram.org/
 
-`start.sh` creates a `screen` session called `qbot`.  Check the logs by doing `screen -r qbot`.  Detach from the session with `ctrl a`, `d`.  Stop the bot with `ctrl c`.
+`start.sh` creates a `screen` session called `qbot`.  Check the logs by doing `screen -r qbot`.  Detach from the session with <kbd>ctrl a</kbd>, <kbd>d</kbd>.  Stop the bot with <kbd>ctrl c</kbd>.
 
 
 ## Adding Custom Plugins
