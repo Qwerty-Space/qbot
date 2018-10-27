@@ -24,7 +24,7 @@ phone = config['DEFAULT']['PHONE']
 session_name = config['DEFAULT']['SESSION_NAME']
 api_id = config['DEFAULT']['ID']
 api_hash = config['DEFAULT']['HASH']
-superadmin = int(config['DEFAULT']['SUPERADMIN'])
+log_id = int(config['DEFAULT']['LOG_ID'])
 script_dir = path.dirname(path.realpath(__file__))  # Set the location of the script
 
 
