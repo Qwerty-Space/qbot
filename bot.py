@@ -5,6 +5,7 @@ import configparser
 from os import listdir, path
 from datetime import datetime
 from inspect import getmembers
+from plugins.global_functions import log
 from importlib import import_module
 
 from telethon import TelegramClient, custom, events, sync
@@ -41,7 +42,7 @@ for pluginfile in pluginfiles:
     if re.search(r".+plugin\.py$", pluginfile):
         plugin_name = pluginfile[:-3]
         plugin_shortname = plugin_name[:-7]
-        plugin = import_module(f"plugins.{plugin_name}", plugin_name)
+        plugin = import_module(f"plugins.{plugin_name}")
         plugin_dict[plugin_shortname] = plugin.__doc__
         for name, handler in getmembers(plugin):
             if events.is_handler(handler):
@@ -50,8 +51,7 @@ for pluginfile in pluginfiles:
 
 ### HELP! ###
 plugin_list = "`\n• `".join(plugin_dict)
-print(plugin_list)
-help_message = f"""**List of commands:**
+help_message = f"""**List of functions:**
 • `{plugin_list}`
 
 Do `/help <command>` to learn more about it.
@@ -59,9 +59,8 @@ Do `/help <command>` to learn more about it.
 
 @client.on(events.NewMessage(pattern=r"^/help(?: (\S+))?$", forwards=False))
 async def help(event):
-    sender = await event.get_sender()
     if event.is_private and not (await event.get_chat()).bot:
-        print(f"[{event.date.strftime('%c')}] [{sender.id}] {sender.username}: {event.pattern_match.string}")
+        await log(event)
         try:
             await event.respond(plugin_dict[event.pattern_match.group(1)], link_preview=False)
         except:
@@ -70,9 +69,9 @@ async def help(event):
 
 client.start(phone, bot_token=token)
 try:
-    client.send_message(log_id, "**Bot started at:**  "+datetime.now().strftime("`%c`"))
+    client.send_message(log_id, f"**Bot started at:**  {datetime.now().strftime('`%c`')}")
 except ValueError:
     pass
 
-print("Bot started at:  "+datetime.now().strftime("%c"))
+print(f"Bot started at:  {datetime.now().strftime('%c')}")
 client.run_until_disconnected()
