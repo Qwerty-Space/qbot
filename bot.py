@@ -57,9 +57,9 @@ help_message = f"""**List of functions:**
 Do `/help <command>` to learn more about it.
 """
 
-@client.on(events.NewMessage(pattern=r"^/help(?: (\S+))?$"))
+@client.on(events.NewMessage(pattern=r"^/help(?: (\S+))?$", forwards=False))
 async def help(event):
-    if event.is_private:
+    if event.is_private and not (await event.get_chat()).bot:
         await log(event)
         try:
             await event.respond(plugin_dict[event.pattern_match.group(1)], link_preview=False)
@@ -67,11 +67,11 @@ async def help(event):
             await event.respond(help_message, link_preview=False)
 
 
-client.start(bot_token=token)
+client.start(phone, bot_token=token)
 try:
-    client.send_message(superadmin, f"**Bot started at:**  {datetime.now().strftime('`%c`')}")
+    client.send_message(log_id, f"**Bot started at:**  {datetime.now().strftime('`%c`')}")
 except ValueError:
     pass
 
-print("Bot started at:  "+datetime.now().strftime("%c"))
+print(f"Bot started at:  {datetime.now().strftime('%c')}")
 client.run_until_disconnected()
