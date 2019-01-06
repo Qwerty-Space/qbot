@@ -15,5 +15,5 @@ async def log(event, info=""):
         message = ""
     logging.info(
         f"""[{event.date.strftime('%c')}]:
-    [{sender.id}]@[{event.chat.id}] {sender.first_name}@{sender.username}: {message}
+    [{sender.id}]@[{event.chat_id}] {sender.first_name}@{sender.username}: {message}
     {info}""")
